@@ -26,6 +26,7 @@ public class CepDTO {
     private String gia;
     private String ddd;
     private String siafi;
+    private String mensagem;
 
 
 }

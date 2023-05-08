@@ -13,18 +13,21 @@ import java.net.URI;
 public class ViaCepService {
 
 
-    public CepDTO sendRequest(String cep) {
+    public CepDTO sendRequest(String cep, String mensagem) {
         URI uri = UriComponentsBuilder.fromHttpUrl("https://viacep.com.br")
                 .path("/ws/" + cep + "/json/")
                 .build()
                 .toUri();
 
-        return WebClient
+        CepDTO cepDTO = WebClient
                 .builder()
                 .build()
                 .method(HttpMethod.GET)
                 .uri(uri).retrieve()
                 .bodyToMono(CepDTO.class)
                 .block();
+        cepDTO.setMensagem(mensagem);
+
+        return cepDTO;
     }
 }

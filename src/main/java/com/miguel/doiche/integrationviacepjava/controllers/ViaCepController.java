@@ -15,8 +15,10 @@ public class ViaCepController {
     private ViaCepService service;
     @GetMapping(value = "/{cep}")
     public CepDTO consultViaCep(@PathVariable String cep){
+        String mensagem = "Special mention to the developer Lucas";
 
-        return service.sendRequest(cep);
+
+        return service.sendRequest(cep, mensagem);
     }
 
 }
